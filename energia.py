@@ -51,7 +51,7 @@ def CalculoBanho():
         break
         
 
-CalculoBanho()
+
 
 def CalculoAr():
 
@@ -68,9 +68,22 @@ def CalculoAr():
             continue
         break
     while True:
-        temperatura = input("Qual a temperatura média que o ar condicionado está configurado durante o uso")
+        temperatura = input("Qual a temperatura média que o ar condicionado está configurado durante o uso (Digite apenas os numeros)")
         if not temperatura.isdigit():
-            print(temperatura)
+            print("Temperatura deve ser um valor numérico")
+            continue
+
+        temperatura = int(temperatura)
+
+        if temperatura >32:
+            print("A temperatura máxima permitida é de 32°")
+            continue
+        if temperatura <16:
+            print("A temperatura minima permitida é de 16°")
+
+        argasto = (1200 * artempo ((30 - temperatura) / 10))     
+
+        print(f"O gasto de energia com o ar condionado é de {argasto} W")
 
         
 
