@@ -1,34 +1,39 @@
 def CalculoBanho():
-    banhosdiarios = input("Quantos banhos você toma por dia: ")
+    while True:
+        banhosdiarios = input("Quantos banhos você toma por dia: ")
 
-    if not banhosdiarios.isdigit():
-        print("Digite um número inteiro válido.\n")
-        return
+        if not banhosdiarios.isdigit():
+            print("\nDigite um número inteiro válido.\n")
+            continue
 
-    banhosdiarios = int(banhosdiarios)
+        banhosdiarios = int(banhosdiarios)
 
-    if banhosdiarios < 1:
-        print("O número de banhos deve ser positivo.\n")
-        return
+        if banhosdiarios < 1:
+            print("\nO número de banhos deve ser positivo.\n")
+            continue
+        break
+    while True:       
+        banhotempo = input("\nQual a média de minutos que você toma banho: ")
 
-    banhotempo = input("\nQual a média de minutos que você toma banho: ")
+        if not banhotempo.isdigit():
+            print("\nO tempo deve ser em minutos inteiros.")
+            continue
 
-    if not banhotempo.isdigit():
-        print("O tempo deve ser em minutos inteiros.\n")
-        return
+        banhotempo = int(banhotempo)
 
-    banhotempo = int(banhotempo)
+        if banhotempo < 1:
+            print("\nO tempo deve ser positivo.")
+            continue
 
-    if banhotempo < 1:
-        print("O tempo deve ser positivo.\n")
-        return
+        calculobanho = banhotempo * 550 * banhosdiarios
 
-    calculobanho = banhotempo * 550 * banhosdiarios
+        print(f"\nSeu banho consome diariamente {calculobanho} W")
 
-    print(f"\nSeu banho consome diariamente {calculobanho} W\n")
-
+        print(f"\nSeu banho consome semanalmente {calculobanho * 7}")
+        break
+        
 
 CalculoBanho()
 
-def calcular():
-    print("")
+def CalculoAr():
+    print("zezé")
