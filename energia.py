@@ -173,9 +173,9 @@ def CalculoVideoGame():
             print("\nO tempo deve ser positivo.\n")
             continue
 
+        gamegasto = 150 * gametempo
+
+        print(f"\nSeu video game consome aproximadamente {gamegasto} Wh por dia")
+
         break
-
-    gamegasto = 150 * gametempo
-
-    print(f"\nSeu video game consome aproximadamente {gamegasto} Wh por dia")
     
