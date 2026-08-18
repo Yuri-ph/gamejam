@@ -34,11 +34,11 @@ while True:
     while True:
         continuar = input("\nDeseja fazer outro cálculo? (sim/não): ").strip().lower()
     
-        if continuar in ("sim", "não", "nao"):
+        if continuar in ("sim", "s", "não", "nao"):
             break
         else:
             print("resposta inválida, digite 'sim' ou 'não'")
 
-        if continuar in ("nao", "não"):
-            print("encerrando o programa...")
-            break
+    if continuar in ("nao", "não", "n"):
+        print("encerrando o programa...")
+        break  
