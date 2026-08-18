@@ -56,7 +56,7 @@ CalculoBanho()
 def CalculoAr():
 
     while True:
-        artempo = input("Quanto tempo você deixa em média o ar condicionado ligado por dia")
+        artempo = input("Em média quantas horas por dia você deixa o ar condicionado ligado")
         if not artempo.isdigit():
             print("\nDigite um número inteiro válido.\n")
             continue
@@ -67,6 +67,10 @@ def CalculoAr():
             print("O tempo não pode ser negativo")
             continue
         break
+    while True:
+        temperatura = input("Qual a temperatura média que o ar condicionado está configurado durante o uso")
+        if not temperatura.isdigit():
+            print(temperatura)
 
         
 
