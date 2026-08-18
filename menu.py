@@ -19,9 +19,16 @@ def menu():
         print("|")
         print("|________________________")
         
-        escolha == input("qual sera sua escolha: ")
+        escolha = input("| qual sera sua escolha: ")
         
         if escolha == "1":
+            print("")
+            
+        if escolha == "2":
+            print("")
+            
+        if escolha == "3":
+            print("")
             print("")
 
 
