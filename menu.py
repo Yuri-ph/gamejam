@@ -1,5 +1,8 @@
 import time
 import random
+from agua import *
+from carbono import *
+from energia import *
 dicas = [
     "Reduza, Recicle e Reutilize \n| Diminua o consumo de descartáveis, \n| use itens reutilizáveis e separe o lixo reciclável para evitar que materiais vão para aterros",
     "Economize água \n| Feche a torneira ao escovar os dentes, conserte vazamentos e instale redutores de vazão em chuveiros e torneiras",
@@ -14,10 +17,10 @@ def menu():
         dica = random.choice(dicas)
         print("\n __________MENU__________")
         print("|")
+        print("| 1- Calculo de gasto de água")
+        print("| 2- Calculo de gasto de energia")
+        print("| 3- Calculo de gasto de caborno")
         print("|")
-        print("| 1- ")
-        print("| 2- ")
-        print("| 3- ")
         print("|💡 DICA: ", dica)
         print("|")
         print("|________________________")
@@ -25,13 +28,13 @@ def menu():
         escolhaMenu = input("| qual sera sua escolha: ")
         
         if escolhaMenu == "1":
-            print("")
+            CalcularAgua()
             
         if escolhaMenu == "2":
-            print("")
+            menuEnergia()
             
         if escolhaMenu == "3":
-            print("")
+            CalculoCarbono()
 
 
 
