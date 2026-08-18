@@ -28,4 +28,17 @@ def CalcularAgua():
     else:
         print("🔴muito gasto de água🔴")
 
-CalcularAgua()
+while True:
+
+    CalcularAgua()
+    while True:
+        continuar = input("\nDeseja fazer outro cálculo? (sim/não): ").strip().lower()
+    
+        if continuar in ("sim", "não", "nao"):
+            break
+        else:
+            print("resposta inválida, digite 'sim' ou 'não'")
+
+        if continuar in ("nao", "não"):
+            print("encerrando o programa...")
+            break
