@@ -1,7 +1,7 @@
 def CalcularAgua():
     while True:
         try:
-            tempo = float(input("quanto tempo em minutos dura o seu banho?: "))
+            tempo = float(input("Quantos minutos dura o seu banho?: "))
 
             if tempo <= 0:
                 print("Digite um número acima de 0!")
@@ -9,7 +9,7 @@ def CalcularAgua():
             break
 
         except ValueError:
-            print("apenas números por favor!")
+            print("Apenas números por favor!")
             continue
     litros_gastos_minuto = 10
 
