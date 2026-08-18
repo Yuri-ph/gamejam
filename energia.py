@@ -36,4 +36,5 @@ def CalculoBanho():
 CalculoBanho()
 
 def CalculoAr():
-    print("zezé")
+        while True:
+             artempo = input("")
