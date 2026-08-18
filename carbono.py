@@ -35,13 +35,23 @@ while True:
         break
     except ValueError:
         print("Erro: digite um número válido (ex: 5).")
+        continue
+
+
 
 km_semana = km_dia * dias_semana
 co2_semana = km_semana * Fator_Gasolina
+
 
 print()
 print("--- Resultado ---")
 print("Km rodados na semana:", km_semana, "km")
 print("CO2 emitido na semana:", co2_semana, "kg")
 
-CalculoCarbono()
+while True:
+    CalculoCarbono()
+
+    continuar = input("\n Deseja fazer outro cálculo? (sim/não)").strip().lower()
+    if continuar != "nao":
+            print("Encerrando o programa...")
+            break
