@@ -1,3 +1,21 @@
+
+def menuEnergia():
+    while True:
+        print("\n __________MENU_DE_ENERGIA__________")
+        print("|")
+        print("| 1- Calcular energia do banho")
+        print("| 2- Calcular energia do ar condicionado")
+        print("|")
+        print("|_____________________________________")
+        
+        escolhaMenu = input("| qual sera sua escolha: ")
+        
+        if escolhaMenu == "1":
+            CalculoBanho()
+            
+        if escolhaMenu == "2":
+            CalculoAr()
+            
 def CalculoBanho():
     while True:
         banhosdiarios = input("Quantos banhos você toma por dia: ")
@@ -36,6 +54,7 @@ def CalculoBanho():
 CalculoBanho()
 
 def CalculoAr():
+
     while True:
         artempo = input("Quanto tempo você deixa em média o ar condicionado ligado por dia")
         if not artempo.isdigit():
@@ -54,4 +73,6 @@ def CalculoAr():
 
 
     
+
+
 
