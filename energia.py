@@ -179,4 +179,5 @@ def CalculoVideoGame():
         print(f"\nSeu video game consome aproximadamente {gamegasto} Wh por dia")
 
         break
-    
+def Caulacompleto():
+
