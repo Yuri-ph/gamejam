@@ -80,6 +80,7 @@ def CalculoAr():
 
         if artempo > 24:
             print("O tempo máximo permitido é de 24 horas")
+            continue
 
         if artempo <0:
             print("O tempo não pode ser negativo")
