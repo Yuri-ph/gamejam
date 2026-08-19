@@ -16,16 +16,16 @@ def menuEnergia():
         if escolhaMenu == "1":
             CalculoBanho()
             
-        if escolhaMenu == "2":
+        elif escolhaMenu == "2":
             CalculoAr()
 
-        if escolhaMenu == "3":
+        elif escolhaMenu == "3":
             CalculoTv()
 
-        if escolhaMenu == "4":
+        elif escolhaMenu == "4":
             CalculoComputador()
 
-        if escolhaMenu == "5":
+        elif escolhaMenu == "5":
             CalculoVideoGame()
             
 def CalculoBanho():
@@ -179,5 +179,4 @@ def CalculoVideoGame():
         print(f"\nSeu video game consome aproximadamente {gamegasto} Wh por dia")
 
         break
-def Caulacompleto():
-
+def Caulacompleto(gamegasto,):
