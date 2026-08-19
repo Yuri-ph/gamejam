@@ -373,6 +373,10 @@ def consultarEnergia():
 
     
 def atualizarEnergia():
+    id_energia = escolherEnergia()
+
+    if id_energia is None:
+        return
     conexao = conectarBanco()
 
     if conexao is None:
@@ -471,6 +475,10 @@ def atualizarEnergia():
 
 
 def excluirEnergia():
+    id_energia = escolherEnergia()
+
+    if id_energia is None:
+        return
     conexao = conectarBanco()
 
     if conexao is None:
@@ -548,3 +556,79 @@ def excluirEnergia():
         conexao.close()
 
     time.sleep(2)
+
+def escolherEnergia():
+    
+    conexao = conectarBanco()
+
+    if conexao is None:
+        print("|")
+        print("| Não foi possível conectar ao banco de dados.")
+        time.sleep(2)
+        return None
+
+    try:
+        cursor = conexao.cursor()
+
+        cursor.execute("""
+            SELECT id_energia, gasto_total
+            FROM energia
+            ORDER BY id_energia
+        """)
+
+        resultados = cursor.fetchall()
+
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+        print("_____________ESCOLHER CÁLCULO_____________")
+        print()
+
+        if not resultados:
+            print("| Nenhum cálculo encontrado.")
+            cursor.close()
+            conexao.close()
+            input("\n| Pressione ENTER para continuar...")
+            return None
+
+        print("| ID | Gasto total")
+        print("|---------------------------")
+
+        for registro in resultados:
+            print(f"| {registro[0]}  | {registro[1]} Wh")
+
+        print("|---------------------------")
+        print()
+
+        while True:
+            id_energia = input("| Digite o ID do cálculo: ")
+
+            if not id_energia.isdigit():
+                print("| ID inválido. Digite apenas números.")
+                continue
+
+            id_energia = int(id_energia)
+
+            cursor.execute(
+                "SELECT id_energia FROM energia WHERE id_energia = %s",
+                (id_energia,)
+            )
+
+            registro = cursor.fetchone()
+
+            if registro is None:
+                print("| Esse ID não existe.")
+                continue
+
+            cursor.close()
+            conexao.close()
+
+            return id_energia
+
+    except Exception as erro:
+        print("|")
+        print("| Erro ao consultar os cálculos:")
+        print("|", erro)
+
+        conexao.close()
+        time.sleep(2)
+        return None
