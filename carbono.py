@@ -47,7 +47,7 @@ def CalculoCarbono():
             print("Erro: digite um número válido (ex: 10 ou 10.5).")
  
  
-<<<<<<< HEAD
+
     while True:
         try:
             dias_semana = float(input("Quantos dias por semana você usa o carro? "))
@@ -83,15 +83,16 @@ while True:
             break
         else:
             print("resposta inválida, digite 'sim' ou 'não'")
-=======
+
         while True:
             try:
+                km_dia = float(input("Quantos km você anda de carro por dia? "))
                 dias_semana = float(input("Quantos dias por semana você usa o carro? "))
->>>>>>> df7280d51396d7ec01c1961ee8d7fd4f925b7cc1
+
     
                 if dias_semana < 0 or dias_semana > 7:
                     print("Erro: o valor deve estar entre 0 e 7.")
-                    return
+                    
     
             except ValueError:
                 print("Erro: digite um número válido (ex: 5).")
