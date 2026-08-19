@@ -1,7 +1,7 @@
 import time
 import random
 from agua import *
-# from carbono import *
+from carbono import *
 from energia import *
 dicas = [
     "Reduza, Recicle e Reutilize \n| Diminua o consumo de descartáveis, \n| use itens reutilizáveis e separe o lixo reciclável para evitar que materiais vão para aterros",
