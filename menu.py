@@ -31,17 +31,17 @@ def menu():
         if escolhaMenu == "1":
             CalcularAgua()
             
-        if escolhaMenu == "2":
+        elif escolhaMenu == "2":
             menuEnergia()
             
         if escolhaMenu == "3":
             CalculoCarbono()
 
         else:
+            print("|")
             print("| Opção inválida!")
             time.sleep(2)
-            return menu()
-
+        
 
 
 menu()
