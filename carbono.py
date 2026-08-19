@@ -1,33 +1,41 @@
+
 # import mysql.connector
 # from mysql.connector import Error
 # from datetime import datetime
+
+import mysql.connector
+from mysql.connector import Error
+from datetime import datetime
+import time
+
  
-# Fator_Gasolina = 0.192
+Fator_Gasolina = 0.192
  
-# CONFIG_BANCO = {
-#     "host": "127.0.0.1",
-#     "user": "root",
-#     "password": "Senac2026@",
-#     "database": "hackaton"
-# }
- 
- 
-# def salvar_calculo(km_dia, dias_semana, km_semana, co2_semana):
-#     try:
-#         conexao = mysql.connector.connect(**CONFIG_BANCO)
-#         cursor = conexao.cursor()
+CONFIG_BANCO = {
+    "host": "127.0.0.1",
+    "user": "root",
+    "password": "Senac2026@",
+    "database": "hackaton"
+}
  
  
-#         cursor.execute("INSERT INTO calculos (km_dia, dias_semana, km_semana, co2_semana) VALUES (%s, %s, %s, %s)", (km_dia, dias_semana, km_semana, co2_semana))
+def salvar_calculo(km_dia, dias_semana, km_semana, co2_semana):
+    try:
+        conexao = mysql.connector.connect(**CONFIG_BANCO)
+        cursor = conexao.cursor()
  
-#         conexao.commit()
-#         cursor.close()
-#         conexao.close()
  
-#         print("Cálculo salvo no banco de dados")
+        cursor.execute("INSERT INTO calculos (km_dia, dias_semana, km_semana, co2_semana) VALUES (%s, %s, %s, %s)", (km_dia, dias_semana, km_semana, co2_semana))
  
-#     except Error as e:
-#         print(f"Erro ao salvar dados no banco de dados: {e}")
+        conexao.commit()
+        cursor.close()
+        conexao.close()
+ 
+        print("Cálculo salvo no banco de dados")
+ 
+    except Error as e:
+        print(f"Erro ao salvar dados no banco de dados: {e}")
+
 
 
 
@@ -127,6 +135,7 @@
 #                 if continuar in ("nao", "não", "n"):
 #                     print("encerrando o programa...")
 #                     break  
+
 def CalculoCarbono():
 
     print("=== Calculadora de carbono semanal (carro) ===")
@@ -160,11 +169,12 @@ def CalculoCarbono():
 
     km_semana = km_dia * dias_semana
     co2_semana = km_semana * Fator_Gasolina
-
     print()
     print("--- Resultado ---")
     print("Km rodados na semana:", km_semana, "km")
     print("CO2 emitido na semana:", co2_semana, "kg")
+
+    time.sleep(2)
 
     salvar_calculo(
         km_dia,
@@ -198,6 +208,7 @@ def CalculoCarbono():
         print("CO2 emitido na semana:", co2_semana, "kg")
  
         salvar_calculo(km_dia, dias_semana, km_semana, co2_semana)
+
  
 while True:
  
@@ -257,4 +268,5 @@ while True:
 
         if sair:
             break
+
 
