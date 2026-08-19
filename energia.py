@@ -1,6 +1,8 @@
+import os
 
 def menuEnergia():
     while True:
+        os.system('cls' if os.name == 'nt' else 'clear')
         print("__________MENU_DE_ENERGIA__________")
         print("|")
         print("| 1- Calcular energia do banho")
@@ -16,20 +18,21 @@ def menuEnergia():
         if escolhaMenu == "1":
             CalculoBanho()
             
-        elif escolhaMenu == "2":
+        if escolhaMenu == "2":
             CalculoAr()
 
-        elif escolhaMenu == "3":
+        if escolhaMenu == "3":
             CalculoTv()
 
-        elif escolhaMenu == "4":
+        if escolhaMenu == "4":
             CalculoComputador()
 
-        elif escolhaMenu == "5":
+        if escolhaMenu == "5":
             CalculoVideoGame()
             
 def CalculoBanho():
     while True:
+        print("| ")
         banhosdiarios = input("| Quantos banhos você toma por dia: ")
 
         if not banhosdiarios.isdigit():
@@ -203,4 +206,4 @@ def CalculoVideoGame():
         print(f"| Seu video game consome aproximadamente {gamegasto} Wh por dia")
 
         break
-def Caulacompleto(gamegasto,):
+    
