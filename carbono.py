@@ -31,7 +31,6 @@
 
 
 
-<<<<<<< HEAD
 # def CalculoCarbono():
  
 #     print("=== Calculadora de carbono semanal (carro) ===")
@@ -128,7 +127,6 @@
 #                 if continuar in ("nao", "não", "n"):
 #                     print("encerrando o programa...")
 #                     break  
-=======
 def CalculoCarbono():
 
     print("=== Calculadora de carbono semanal (carro) ===")
@@ -259,4 +257,4 @@ while True:
 
         if sair:
             break
->>>>>>> 1809fffd4d7662cfeb866838a55bb03d0eb059e0
+
