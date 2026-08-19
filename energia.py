@@ -1,5 +1,6 @@
 import os
 import time
+from database import criarBancoDados, conectarBanco
 
 
 def menuEnergia():
@@ -7,36 +8,30 @@ def menuEnergia():
         os.system('cls' if os.name == 'nt' else 'clear')
         print("__________MENU_DE_ENERGIA__________")
         print("|")
-        print("| 1- Calcular energia do banho")
-        print("| 2- Calcular energia do ar condicionado")
-        print("| 3- Calcular energia da televisão")
-        print("| 4- Calcular energia do computador")
-        print("| 5- Calcular energia do video game")
-        print("| 6- Calcular gasto total de energia")
-        print("| 7- Voltar ao menu principal")
-
+        print("| 1- Calcular energia")
+        print("| 2- Consultar cálculos")
+        print("| 3- Atualizar cálculo")
+        print("| 4- Excluir cálculo")
+        print("| 5- Voltar ao menu principal")
         print("|_____________________________________")
         
         escolhaMenuEnergia = input("| qual sera sua escolha: ")
         
+        
+
         if escolhaMenuEnergia == "1":
-            CalculoBanho()
-            
+            Calculototal()
+
         elif escolhaMenuEnergia == "2":
-            CalculoAr()
+            consultarEnergia()
 
         elif escolhaMenuEnergia == "3":
-            CalculoTv()
+            atualizarEnergia()
 
         elif escolhaMenuEnergia == "4":
-            CalculoComputador()
+            excluirEnergia()
 
         elif escolhaMenuEnergia == "5":
-            CalculoVideoGame()
-
-        elif escolhaMenuEnergia == "6":
-            Calculototal()
-        elif escolhaMenuEnergia == "7":
             return
         else:
             print("| Opção inválida")
@@ -259,4 +254,297 @@ def Calculototal():
 
     print("|")
     print(f"| Gasto total diário: {total} Wh")
+
+    conexao = conectarBanco()
+
+    if conexao is None:
+        print("|")
+        print("| Não foi possível conectar ao banco de dados.")
+        time.sleep(2)
+        return
+
+    try:
+        cursor = conexao.cursor()
+
+        sql = """
+            INSERT INTO energia (
+                gasto_banho,
+                gasto_ar,
+                gasto_tv,
+                gasto_computador,
+                gasto_video_game,
+                gasto_total
+            )
+            VALUES (%s, %s, %s, %s, %s, %s)
+        """
+
+        valores = (
+            banho,
+            ar,
+            tv,
+            computador,
+            videogame,
+            total
+        )
+
+        cursor.execute(sql, valores)
+
+        conexao.commit()
+
+        print("|")
+        print("| Cálculo salvo no MySQL com sucesso!")
+
+        cursor.close()
+
+    except Exception as erro:
+        print("|")
+        print("| Erro ao salvar o cálculo:")
+        print("|", erro)
+
+        conexao.rollback()
+
+    finally:
+        conexao.close()
+
+    time.sleep(2)
+
+
+def consultarEnergia():
+    conexao = conectarBanco()
+
+    if conexao is None:
+        print("|")
+        print("| Não foi possível conectar ao banco de dados.")
+        time.sleep(2)
+        return
+
+    try:
+        cursor = conexao.cursor()
+
+        sql = """
+            SELECT
+                id_energia,
+                gasto_banho,
+                gasto_ar,
+                gasto_tv,
+                gasto_computador,
+                gasto_video_game,
+                gasto_total
+            FROM energia
+            ORDER BY id_energia DESC
+        """
+
+        cursor.execute(sql)
+
+        resultados = cursor.fetchall()
+
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+        print("_____________CÁLCULOS DE ENERGIA_____________")
+        print()
+
+        if not resultados:
+            print("| Nenhum cálculo encontrado.")
+        else:
+            for registro in resultados:
+                print("|---------------------------------------------")
+                print(f"| ID: {registro[0]}")
+                print(f"| Banho: {registro[1]} Wh")
+                print(f"| Ar condicionado: {registro[2]} Wh")
+                print(f"| Televisão: {registro[3]} Wh")
+                print(f"| Computador: {registro[4]} Wh")
+                print(f"| Video game: {registro[5]} Wh")
+                print(f"| TOTAL: {registro[6]} Wh")
+               
+
+            print("|---------------------------------------------")
+
+        cursor.close()
+
+    except Exception as erro:
+        print("|")
+        print("| Erro ao consultar os cálculos:")
+        print("|", erro)
+
+    finally:
+        conexao.close()
+
+    input("\n| Pressione ENTER para continuar...")
+
     
+def atualizarEnergia():
+    conexao = conectarBanco()
+
+    if conexao is None:
+        print("|")
+        print("| Não foi possível conectar ao banco de dados.")
+        time.sleep(2)
+        return
+
+    try:
+        cursor = conexao.cursor()
+
+        print("|")
+        id_energia = input("| Digite o ID do cálculo que deseja atualizar: ")
+
+        if not id_energia.isdigit():
+            print("| ID inválido.")
+            cursor.close()
+            conexao.close()
+            time.sleep(2)
+            return
+
+        id_energia = int(id_energia)
+
+        # Verifica se o ID existe
+        cursor.execute(
+            "SELECT * FROM energia WHERE id_energia = %s",
+            (id_energia,)
+        )
+
+        registro = cursor.fetchone()
+
+        if registro is None:
+            print("|")
+            print("| Cálculo não encontrado.")
+            cursor.close()
+            conexao.close()
+            time.sleep(2)
+            return
+
+        print("|")
+        print("| Recalculando os valores...")
+        print("|")
+
+        # Faz um novo cálculo
+        banho = CalculoBanho()
+        ar = CalculoAr()
+        tv = CalculoTv()
+        computador = CalculoComputador()
+        videogame = CalculoVideoGame()
+
+        total = banho + ar + tv + computador + videogame
+
+        sql = """
+            UPDATE energia
+            SET
+                gasto_banho = %s,
+                gasto_ar = %s,
+                gasto_tv = %s,
+                gasto_computador = %s,
+                gasto_video_game = %s,
+                gasto_total = %s
+            WHERE id_energia = %s
+        """
+
+        valores = (
+            banho,
+            ar,
+            tv,
+            computador,
+            videogame,
+            total,
+            id_energia
+        )
+
+        cursor.execute(sql, valores)
+
+        conexao.commit()
+
+        print("|")
+        print("| Cálculo atualizado com sucesso!")
+        print(f"| Novo gasto total: {total} Wh")
+
+        cursor.close()
+
+    except Exception as erro:
+        print("|")
+        print("| Erro ao atualizar o cálculo:")
+        print("|", erro)
+
+        conexao.rollback()
+
+    finally:
+        conexao.close()
+
+    time.sleep(2)
+
+
+def excluirEnergia():
+    conexao = conectarBanco()
+
+    if conexao is None:
+        print("|")
+        print("| Não foi possível conectar ao banco de dados.")
+        time.sleep(2)
+        return
+
+    try:
+        cursor = conexao.cursor()
+
+        print("|")
+        id_energia = input("| Digite o ID do cálculo que deseja excluir: ")
+
+        if not id_energia.isdigit():
+            print("|")
+            print("| ID inválido.")
+            cursor.close()
+            conexao.close()
+            time.sleep(2)
+            return
+
+        id_energia = int(id_energia)
+
+        # Verifica se existe
+        cursor.execute(
+            "SELECT * FROM energia WHERE id_energia = %s",
+            (id_energia,)
+        )
+
+        registro = cursor.fetchone()
+
+        if registro is None:
+            print("|")
+            print("| Cálculo não encontrado.")
+            cursor.close()
+            conexao.close()
+            time.sleep(2)
+            return
+
+        print("|")
+        print(f"| Cálculo encontrado: ID {id_energia}")
+        print(f"| Gasto total: {registro[6]} Wh")
+
+        confirmacao = input("| Tem certeza que deseja excluir? (sim/não): ").strip().lower()
+
+        if confirmacao not in ("sim", "s"):
+            print("|")
+            print("| Exclusão cancelada.")
+            cursor.close()
+            conexao.close()
+            time.sleep(2)
+            return
+
+        cursor.execute(
+            "DELETE FROM energia WHERE id_energia = %s",
+            (id_energia,)
+        )
+
+        conexao.commit()
+
+        print("|")
+        print("| Cálculo excluído com sucesso!")
+
+        cursor.close()
+
+    except Exception as erro:
+        print("|")
+        print("| Erro ao excluir o cálculo:")
+        print("|", erro)
+
+        conexao.rollback()
+
+    finally:
+        conexao.close()
+
+    time.sleep(2)

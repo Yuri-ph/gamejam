@@ -4,6 +4,8 @@ import os
 from agua import *
 from carbono import *
 from energia import *
+
+
 dicas = [
     "Reduza, Recicle e Reutilize ♻️ \n| Diminua o consumo de descartáveis, \n| use itens reutilizáveis e separe o lixo reciclável para evitar que materiais vão para aterros",
     "Economize água 🫗 \n| Feche a torneira ao escovar os dentes, conserte vazamentos e instale redutores de vazão em chuveiros e torneiras",
@@ -13,6 +15,7 @@ dicas = [
 ]
 
 def menu():
+    
     while True:
         dica = random.choice(dicas)
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -36,9 +39,6 @@ def menu():
             menuEnergia()
             
 
-        elif escolhaMenu == "3":
-            CalculoCarbono()
-
         # elif escolhaMenu == "3":
         #     CalculoCarbono()
         
@@ -54,4 +54,3 @@ def menu():
         
 
 
-menu()
