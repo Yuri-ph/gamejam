@@ -34,7 +34,7 @@ def menu():
         elif escolhaMenu == "2":
             menuEnergia()
             
-        if escolhaMenu == "3":
+        elif escolhaMenu == "3":
             CalculoCarbono()
 
         else:

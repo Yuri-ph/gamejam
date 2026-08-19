@@ -13,7 +13,7 @@ CONFIG_BANCO = {
 }
  
  
-def salvar_calculo(km_dia, dias_semana, km_semana, co2_semana):
+def salvar_calculo_carbono(km_dia, dias_semana, km_semana, co2_semana):
     try:
         conexao = mysql.connector.connect(**CONFIG_BANCO)
         cursor = conexao.cursor()
@@ -72,7 +72,7 @@ def CalculoCarbono():
 
     time.sleep(2)
 
-    salvar_calculo(
+    salvar_calculo_carbono(
         km_dia,
         dias_semana,
         km_semana,
@@ -100,4 +100,4 @@ def CalculoCarbono():
         print("Km rodados na semana:", km_semana, "km")
         print("CO2 emitido na semana:", co2_semana, "kg")
  
-        salvar_calculo(km_dia, dias_semana, km_semana, co2_semana)
+        salvar_calculo_carbono(km_dia, dias_semana, km_semana, co2_semana)
