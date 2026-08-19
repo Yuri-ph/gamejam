@@ -27,6 +27,8 @@ def menuEnergia():
 
         elif escolhaMenu == "5":
             CalculoVideoGame()
+        else: 
+            print("Escolha inválida")
             
 def CalculoBanho():
     while True:
@@ -88,6 +90,7 @@ def CalculoAr():
         if artempo > 24:
             print("|")
             print("| O tempo máximo permitido é de 24 horas")
+            continue
 
         if artempo <0:
             print("|")
@@ -203,4 +206,4 @@ def CalculoVideoGame():
         print(f"| Seu video game consome aproximadamente {gamegasto} Wh por dia")
 
         break
-def Caulacompleto(gamegasto,):
+
