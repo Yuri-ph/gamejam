@@ -1,6 +1,7 @@
 import os
 import time
 
+
 def menuEnergia():
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -14,22 +15,31 @@ def menuEnergia():
 
         print("|_____________________________________")
         
-        escolhaMenu = input("| qual sera sua escolha: ")
+        escolhaMenuEnergia = input("| qual sera sua escolha: ")
         
-        if escolhaMenu == "1":
+        if escolhaMenuEnergia == "1":
             CalculoBanho()
             
-        if escolhaMenu == "2":
+        if escolhaMenuEnergia == "2":
             CalculoAr()
 
-        if escolhaMenu == "3":
+        if escolhaMenuEnergia == "3":
             CalculoTv()
 
-        if escolhaMenu == "4":
+        if escolhaMenuEnergia == "4":
             CalculoComputador()
 
-        if escolhaMenu == "5":
+        if escolhaMenuEnergia == "5":
             CalculoVideoGame()
+
+        if escolhaMenuEnergia == "6":
+            return 
+
+        else:
+            print("| opção inválida")
+            print("| voltando para o menu principal...")
+            time.sleep(2)
+            return menuEnergia()
             
 def CalculoBanho():
     while True:
@@ -40,7 +50,7 @@ def CalculoBanho():
             print("|")
             print("| Digite um número inteiro válido.")
             time.sleep(2)
-            continue
+            return menuEnergia()
 
         banhosdiarios = int(banhosdiarios)
 
@@ -48,7 +58,7 @@ def CalculoBanho():
             print("|")
             print("| O número de banhos deve ser positivo.")
             time.sleep(2)
-            continue
+            return menuEnergia()
         break
     while True:       
         print("|")
@@ -58,7 +68,7 @@ def CalculoBanho():
             print("|")
             print("| O tempo deve ser em minutos inteiros.")
             time.sleep(2)
-            continue
+            return menuEnergia()
 
         banhotempo = int(banhotempo)
 
@@ -66,20 +76,19 @@ def CalculoBanho():
                     print("|")
                     print("| O tempo máximo permitido é de 24 horas")
                     time.sleep(2)
-                    continue
+                    return menuEnergia()
 
         if banhotempo < 1:
             print("|")
             print("| O tempo deve ser positivo.")
             time.sleep(2)
-            continue
+            return menuEnergia()
 
         calculobanho = banhotempo * 550 * banhosdiarios
         print("|")
         print(f"| Seu banho consome diariamente {calculobanho} W")
         time.sleep(2)
-
-        break
+        return menuEnergia()
         
 
 
@@ -92,7 +101,7 @@ def CalculoAr():
             print("|")
             print("| Digite um número inteiro válido.")
             time.sleep(2)
-            continue
+            return menuEnergia()
         
         artempo = int (artempo)
 
@@ -100,13 +109,13 @@ def CalculoAr():
             print("|")
             print("| O tempo máximo permitido é de 24 horas")
             time.sleep(2)
-            continue
+            return menuEnergia()
 
         if artempo <0:
             print("|")
             print("| O tempo não pode ser negativo")
             time.sleep(2)
-            continue
+            return menuEnergia()
         break
     while True:
         print("|")
@@ -115,7 +124,7 @@ def CalculoAr():
             print("|")
             print("| Temperatura deve ser um valor numérico")
             time.sleep(2)
-            continue
+            return menuEnergia()
 
         temperatura = int(temperatura)
 
@@ -123,19 +132,22 @@ def CalculoAr():
             print("|")
             print("| A temperatura máxima permitida é de 32°")
             time.sleep(2)
-            continue
+            return menuEnergia()
+        
+
 
         if temperatura <16:
             print("|")
             print("| A temperatura minima permitida é de 16°")
             time.sleep(2)
-            continue
+            return menuEnergia()
 
         argasto = 1200 * artempo * ((30 - temperatura) / 10)  
 
         print(f"| O gasto de energia com o ar condionado é de {argasto} W")
         time.sleep(2)
-        break
+        return menuEnergia
+
 
 def CalculoTv():
     while True:
@@ -146,7 +158,7 @@ def CalculoTv():
             print("|")
             print("| Digite um número inteiro válido.")
             time.sleep(2)
-            continue
+            return menuEnergia()
         
         tvtempo = int(tvtempo)
 
@@ -154,20 +166,20 @@ def CalculoTv():
             print("|")
             print("| O tempo maxino é de 24 horas")
             time.sleep(2)
-            continue
+            return menuEnergia()
 
         if tvtempo < 1:
             print("|")
             print("| O tempo deve ser positivo.")
             time.sleep(2)
-            continue
+            return menuEnergia()
 
         tvgasto = 100 * tvtempo
         print("|")
         print(f"| Sua televisão consome aproximadamente {tvgasto} Wh por dia")
         time.sleep(2)
-
-        break
+        return menuEnergia
+    
 
 def CalculoComputador():
     while True:
@@ -178,7 +190,7 @@ def CalculoComputador():
             print("|")
             print("| Digite um número inteiro válido.")
             time.sleep(2)
-            continue
+            return menuEnergia()
 
         comptempo = int(comptempo)
 
@@ -186,13 +198,13 @@ def CalculoComputador():
             print("|")
             print("| O tempo máximo é de 24 horas.")
             time.sleep(2)
-            continue
+            return menuEnergia()
 
         if comptempo < 1:
             print("|")
             print("| O tempo deve ser positivo.")
             time.sleep(2)
-            continue
+            return menuEnergia()
 
         break
 
@@ -211,7 +223,7 @@ def CalculoVideoGame():
             print("|")
             print("| Digite um número inteiro válido.")
             time.sleep(2)
-            continue
+            return menuEnergia()
 
         gametempo = int(gametempo)
 
@@ -219,13 +231,13 @@ def CalculoVideoGame():
             print("|")
             print("| O tempo máximo é de 24 horas.")
             time.sleep(2)
-            continue
+            return menuEnergia()
 
         if gametempo < 1:
             print("|")
             print("| O tempo deve ser positivo.")
             time.sleep(2)
-            continue
+            return menuEnergia()
 
         gamegasto = 150 * gametempo
         print("|")
@@ -233,4 +245,9 @@ def CalculoVideoGame():
         time.sleep(2)
 
         break
+
+def Calculotota():
+    calculototal = CalculoAr + CalculoBanho + CalculoComputador + CalculoTv + CalculoVideoGame
+
+    print(calculototal)
     
