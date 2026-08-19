@@ -1,5 +1,6 @@
 import time
 import random
+import os
 from agua import *
 from carbono import *
 from energia import *
@@ -15,7 +16,8 @@ dicas = [
 def menu():
     while True:
         dica = random.choice(dicas)
-        print("\n __________MENU__________")
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("__________MENU__________")
         print("|")
         print("| 1- Calculo de gasto de água")
         print("| 2- Calculo de gasto de energia")

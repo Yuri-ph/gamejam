@@ -1,6 +1,8 @@
+import os
 
 def menuEnergia():
     while True:
+        os.system('cls' if os.name == 'nt' else 'clear')
         print("__________MENU_DE_ENERGIA__________")
         print("|")
         print("| 1- Calcular energia do banho")
@@ -30,6 +32,7 @@ def menuEnergia():
             
 def CalculoBanho():
     while True:
+        print("| ")
         banhosdiarios = input("| Quantos banhos você toma por dia: ")
 
         if not banhosdiarios.isdigit():
