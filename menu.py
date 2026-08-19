@@ -35,17 +35,17 @@ def menu():
         elif escolhaMenu == "2":
             menuEnergia()
             
-<<<<<<< HEAD
+
         elif escolhaMenu == "3":
             CalculoCarbono()
-=======
+
         # elif escolhaMenu == "3":
         #     CalculoCarbono()
         
         elif escolhaMenu == "0":
             print("saindo...")
             break
->>>>>>> 59c8d2555fdeda04768f64ba48c340811cbe5996
+
 
         else:
             print("|")

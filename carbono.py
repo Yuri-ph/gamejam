@@ -207,9 +207,9 @@ def CalculoCarbono():
         print("Km rodados na semana:", km_semana, "km")
         print("CO2 emitido na semana:", co2_semana, "kg")
  
-<<<<<<< HEAD
+
         salvar_calculo_carbono(km_dia, dias_semana, km_semana, co2_semana)
-=======
+
         salvar_calculo(km_dia, dias_semana, km_semana, co2_semana)
 
  
@@ -272,5 +272,3 @@ while True:
         if sair:
             break
 
-
->>>>>>> 59c8d2555fdeda04768f64ba48c340811cbe5996
