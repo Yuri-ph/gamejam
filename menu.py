@@ -2,7 +2,7 @@ import time
 import random
 import os
 from agua import *
-# from carbono import *
+from carbono import *
 from energia import *
 dicas = [
     "Reduza, Recicle e Reutilize ♻️ \n| Diminua o consumo de descartáveis, \n| use itens reutilizáveis e separe o lixo reciclável para evitar que materiais vão para aterros",
@@ -34,8 +34,8 @@ def menu():
         if escolhaMenu == "2":
             menuEnergia()
             
-        # if escolhaMenu == "3":
-        #     CalculoCarbono()
+        if escolhaMenu == "3":
+            CalculoCarbono()
 
         else:
             print("| Opção inválida!")

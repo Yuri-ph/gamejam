@@ -1,6 +1,7 @@
 import mysql.connector
 from mysql.connector import Error
 from datetime import datetime
+
  
 Fator_Gasolina = 0.192
  
@@ -76,11 +77,8 @@ def CalculoCarbono():
         km_semana,
         co2_semana
     )
-        
-        
- 
 
- 
+        
     while True:
         try:
             if dias_semana < 0 or dias_semana > 7:
@@ -102,48 +100,8 @@ def CalculoCarbono():
         print("CO2 emitido na semana:", co2_semana, "kg")
  
         salvar_calculo(km_dia, dias_semana, km_semana, co2_semana)
- 
-while True:
- 
-  
- 
-    
-    # while True:
-    #     try:
-    #         km_dia = float(input("Quantos km você roda por dia? "))
-
-    #         if km_dia < 0:
-    #             print("Erro: o valor não pode ser negativo.")
-    #             continue
-
-    #         break  
-
-    #     except ValueError:
-    #         print("Erro: digite um número válido (ex: 5).")
-
-
-    # while True:
-    #     continuar = input("\nDeseja fazer outro cálculo? (sim/não): ").strip().lower()
-
-    #     if continuar in ("sim", "s"):
-    #         print("Reiniciando...")
-    #         break
-
-    #     if continuar in ("não", "nao", "n"):
-    #         print("Encerrando o programa. Até mais!")
-    #         break
-    #     else:
-    #         print("Resposta inválida, digite 'sim' ou 'não'.")
-
 
  
-    sair = False
-
-
-    while True:
-
-        CalculoCarbono()
-
         while True:
             continuar = input("\nDeseja fazer outro cálculo? (sim/não): ").strip().lower()
 
@@ -151,13 +109,21 @@ while True:
                 print("Reiniciando...")
                 break
 
-            elif continuar in ("não", "nao", "n"):
+            if continuar in ("não", "nao", "n"):
                 print("Encerrando o programa. Até mais!")
-                sair = True
                 break
-
             else:
                 print("Resposta inválida, digite 'sim' ou 'não'.")
 
-        if sair:
-            break
+
+            while True:
+                continuar = input("\nDeseja fazer outro cálculo? (sim/não): ").strip().lower()
+
+                if continuar in ("sim", "s"):
+                    print("Reiniciando...")
+
+                elif continuar in ("não", "nao", "n"):
+                    print("Encerrando...")
+                    break
+                else:
+                    print("Resposta inválida. Digite sim ou não.")
