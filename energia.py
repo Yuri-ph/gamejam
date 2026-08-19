@@ -39,7 +39,8 @@ def menuEnergia():
         elif escolhaMenuEnergia == "7":
             return
         else:
-            print("labubu")
+            print("| Opção inválida")
+            time.sleep(2)
 def CalculoBanho():
     while True:
         print("| ")

@@ -38,6 +38,7 @@ def menu():
         #     CalculoCarbono()
 
         else:
+            print("|")
             print("| Opção inválida!")
             time.sleep(2)
         
