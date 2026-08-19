@@ -16,11 +16,12 @@ def menu():
     while True:
         dica = random.choice(dicas)
         os.system('cls' if os.name == 'nt' else 'clear')
-        print("__________MENU__________")
+        print(" __________MENU__________")
         print("|")
         print("| 1- Calculo de gasto de água")
         print("| 2- Calculo de gasto de energia")
         print("| 3- Calculo de gasto de caborno")
+        print("| 0- sair do sistema")
         print("|")
         print("| DICA: ", dica)
         print("|")
@@ -34,8 +35,17 @@ def menu():
         elif escolhaMenu == "2":
             menuEnergia()
             
+<<<<<<< HEAD
         elif escolhaMenu == "3":
             CalculoCarbono()
+=======
+        # elif escolhaMenu == "3":
+        #     CalculoCarbono()
+        
+        elif escolhaMenu == "0":
+            print("saindo...")
+            break
+>>>>>>> 59c8d2555fdeda04768f64ba48c340811cbe5996
 
         else:
             print("|")
