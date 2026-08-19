@@ -40,7 +40,7 @@ def CalculoCarbono():
 
 
  
-            while True:
+        while True:
             
                 CalculoCarbono()
             
