@@ -2,7 +2,6 @@ import time
 import random
 import os
 from agua import *
-from carbono import *
 from energia import *
 
 
@@ -23,7 +22,6 @@ def menu():
         print("|")
         print("| 1- Calculo de gasto de água")
         print("| 2- Calculo de gasto de energia")
-        print("| 3- Calculo de gasto de caborno")
         print("| 0- sair do sistema")
         print("|")
         print("| DICA: ", dica)
@@ -37,10 +35,6 @@ def menu():
             
         elif escolhaMenu == "2":
             menuEnergia()
-            
-
-        # elif escolhaMenu == "3":
-        #     CalculoCarbono()
         
         elif escolhaMenu == "0":
             print("saindo...")
