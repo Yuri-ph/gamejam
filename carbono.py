@@ -45,9 +45,12 @@ def CalculoCarbono():
                 return
         except ValueError:
             print("Erro: digite um número válido (ex: 10 ou 10.5).")
- 
+        continue
+        break
+        
  
 
+ 
     while True:
         try:
             dias_semana = float(input("Quantos dias por semana você usa o carro? "))
@@ -105,7 +108,7 @@ while True:
             print("--- Resultado ---")
             print("Km rodados na semana:", km_semana, "km")
             print("CO2 emitido na semana:", co2_semana, "kg")
-        break
+            break
 
 
  
