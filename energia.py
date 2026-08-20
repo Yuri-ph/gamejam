@@ -92,6 +92,7 @@ def CalculoBanho():
 def CalculoAr():
 
     while True:
+        print("|")
         artempo = input("| Em média quantas horas por dia você deixa o ar condicionado ligado: ")
         if not artempo.isdigit():
             print("|")
@@ -148,7 +149,7 @@ def CalculoAr():
 def CalculoTv():
     while True:
         print("|")
-        tvtempo = input("\n| Em média quantas horas por dia você deixa a televisão ligada: ")
+        tvtempo = input("| Em média quantas horas por dia você deixa a televisão ligada: ")
 
         if not tvtempo.isdigit():
             print("|")
@@ -355,6 +356,8 @@ def consultarEnergia():
                 print(f"| Computador: {registro[4]} Wh")
                 print(f"| Video game: {registro[5]} Wh")
                 print(f"| TOTAL: {registro[6]} Wh")
+                print(f"| Os dados exibidos são apenas uma estimativa, não leve como fato absoluto ")
+
                
 
             print("|---------------------------------------------")
