@@ -32,6 +32,15 @@ def criarBancoDados():
 
             )
         """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS calculos_agua (
+                id_agua INT AUTO_INCREMENT PRIMARY KEY,
+
+                tempo DECIMAL(10,2) NOT NULL,
+                gasto_banho DECIMAL(10,2) NOT NULL,
+                gasto_semana DECIMAL(10,2) NOT NULL
+            )
+        """)
 
         conexao.commit()
 
@@ -41,6 +50,7 @@ def criarBancoDados():
         print("| Banco de dados conectado!")
         print("| Banco 'hackaton' verificado!")
         print("| Tabela 'energia' verificada!")
+        print("| Tabela 'calculos_agua' verificada!")
 
     except mysql.connector.Error as erro:
         print("|")

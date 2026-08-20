@@ -1,8 +1,8 @@
 import time
 import random
 import os
-from agua import *
-from energia import *
+from agua import menuAgua
+from energia import menuEnergia
 
 
 dicas = [
@@ -31,7 +31,7 @@ def menu():
         escolhaMenu = input("| qual sera sua escolha: ")
         
         if escolhaMenu == "1":
-            CalcularAgua()
+            menuAgua()
             
         elif escolhaMenu == "2":
             menuEnergia()
